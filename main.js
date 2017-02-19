@@ -33,7 +33,19 @@ var renderPosts = function () {
 };
 
 var renderComments = function () {
-  // start here!
+  $('.comments').empty();
+
+  for (var i = 0; i < posts.length; i += 1) {
+    var post = posts[i];
+    var $post = $('.posts').find('.post').eq(i);
+
+    for(var j = i; j < post.comments.length ; j++){
+      var comment = post.comments[j];
+      $post.append('<div class="comment">'
+      + '<a class="remove">remove</a> '+ post.comments[j].text + '</div>');
+    }
+  }
+
 };
 
 renderPosts();
